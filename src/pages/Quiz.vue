@@ -3,9 +3,17 @@
 </style>
 <template lang="pug">
   div
-    |hello QUiz
+    router-link(tag="button" to='/')
+      | Quit
+    div
+      | {{ questions }}
 
 </template>
 <script>
-export default {};
+import Questions from '../assets/questions.json';
+export default {
+  data() {
+    return { questions: Questions };
+  },
+};
 </script>
