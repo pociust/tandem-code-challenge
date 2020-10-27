@@ -1,6 +1,9 @@
 <template lang="pug">
   div
-    | hello world
+    div
+      | Trivia Night
+    div
+      | Click "Start" to begin quiz
 </template>
 
 <style lang="sass" scoped>

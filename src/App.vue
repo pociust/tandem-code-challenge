@@ -1,14 +1,13 @@
 <template lang="pug">
   #app
-    Header
+    router-view
 </template>
 
 <script>
-import Header from './components/Header.vue';
-
+import Landing from './pages/Landing.vue';
 export default {
   name: 'App',
-  components: { Header },
+  components: { Landing },
 };
 </script>
 
