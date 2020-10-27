@@ -5,15 +5,16 @@
   div
     router-link(tag="button" to='/')
       | Quit
-    div
-      | {{ questions }}
+    QuestionCard(:questionArray="QuestionsJson")
 
 </template>
 <script>
-import Questions from '../assets/questions.json';
+import QuestionsJson from '../assets/questions.json';
+import QuestionCard from '../components/QuestionCard.vue';
 export default {
   data() {
-    return { questions: Questions };
+    return { QuestionsJson };
   },
+  components: { QuestionCard },
 };
 </script>
