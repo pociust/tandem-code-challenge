@@ -1,10 +1,9 @@
 <template lang="pug">
   div
-    div(v-for="(question, index) in questionArray")
-      div(v-if="index === numberOfQuestions")
-        | {{ question.question }}
-        div
-          | {{ question.incorrect }} {{ question.correct }}
+    div
+      | {{ question.question }}
+    span(v-for="choice in question.choices")
+      | {{ choice}}
     button(type="button" @click="changeQuestion")
       | test
 </template>
@@ -15,8 +14,8 @@ export default {
     return { numberOfQuestions: 0 };
   },
   props: {
-    questionArray: {
-      type: Array,
+    question: {
+      type: Object,
       default: null,
     },
   },
