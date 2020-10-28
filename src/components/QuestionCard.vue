@@ -10,9 +10,6 @@
 
 <script>
 export default {
-  data() {
-    return { numberOfQuestions: 0 };
-  },
   props: {
     question: {
       type: Object,
@@ -20,8 +17,8 @@ export default {
     },
   },
   methods: {
-    changeQuestion(number) {
-      this.numberOfQuestions += 1;
+    changeQuestion() {
+      this.$emit('change-question');
     },
   },
 };

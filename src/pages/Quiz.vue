@@ -5,7 +5,7 @@
   div
     router-link(tag="button" to='/')
       | Quit
-    QuestionCard(:question="questionSorted")
+    QuestionCard(:question="questionSorted" @change-question="numberOfQuestion++")
 </template>
 <script>
 import QuestionsJson from '../assets/questions.json';
