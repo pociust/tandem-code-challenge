@@ -9,14 +9,17 @@
   div(class="question-card")
     div
       | {{ question.question }}
-    span(v-for="choice in question.choices")
-      | {{ choice}}
-    button(type="button" @click="changeQuestion")
-      | test
+    div(v-for="choice in randomizedChoices")
+      | {{ choice }}
+      button(type="button" @click="changeQuestion")
+        | test
 </template>
 
 <script>
 export default {
+  data() {
+    return { choices: [] };
+  },
   props: {
     question: {
       type: Object,
@@ -26,6 +29,12 @@ export default {
   methods: {
     changeQuestion() {
       this.$emit('change-question');
+    },
+  },
+  computed: {
+    randomizedChoices() {
+      const choicesToBeSorted = this.question.choices;
+      return choicesToBeSorted.sort(() => Math.random() - 0.5);
     },
   },
 };
