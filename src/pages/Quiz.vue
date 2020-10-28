@@ -5,16 +5,30 @@
   div
     router-link(tag="button" to='/')
       | Quit
-    QuestionCard(:questionArray="QuestionsJson")
-
+    QuestionCard(:question="questionSorted")
 </template>
 <script>
 import QuestionsJson from '../assets/questions.json';
 import QuestionCard from '../components/QuestionCard.vue';
 export default {
   data() {
-    return { QuestionsJson };
+    return {
+      questions: QuestionsJson,
+      numberOfQuestion: 0,
+    };
   },
   components: { QuestionCard },
+  computed: {
+    questionSorted() {
+      const currentQuestion = this.questions[this.numberOfQuestion];
+      const choices = currentQuestion.incorrect.concat(currentQuestion.correct);
+      const reconstructedQuestion = {
+        question: currentQuestion.question,
+        choices: choices,
+        correctAnswer: currentQuestion.correct,
+      };
+      return reconstructedQuestion;
+    },
+  },
 };
 </script>
