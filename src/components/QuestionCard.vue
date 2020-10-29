@@ -59,9 +59,9 @@ export default {
     },
     selectAnswer(answer) {
       if (this.question.correctAnswer === answer) {
-        console.log('correct');
+        this.$emit('correct', answer);
       } else {
-        console.log('wrong');
+        this.$emit('wrong', answer);
       }
     },
   },

@@ -13,7 +13,11 @@
     router-link(tag="button" to='/')
       | Quit
     div(v-if="!answerSelected")
-      QuestionCard(:question="questionSorted" @change-question="numberOfQuestion++")
+      QuestionCard(
+        :question="questionSorted"
+        @correct="answeredCorrectly"
+        @wrong="answeredIncorrectly"
+      )
     div(v-if="answerSelected")
       div(v-if="answerSelectedCorrect")
         AnswerCorrect
@@ -39,6 +43,14 @@ export default {
     QuestionCard,
     AnswerCorrect,
     AnswerWrong,
+  },
+  methods: {
+    answeredCorrectly(answer) {
+      console.log('correct', answer);
+    },
+    answeredIncorrectly(answer) {
+      console.log('wrong', answer);
+    },
   },
   computed: {
     questionSorted() {
