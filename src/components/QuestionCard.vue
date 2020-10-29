@@ -9,10 +9,8 @@
   div(class="question-card")
     div
       | {{ question.question }}
-    div(v-for="choice in randomizedChoices")
+    div(v-for="choice in randomizedChoices" @click="selectedAnswer(choice)")
       | {{ choice }}
-      button(type="button" @click="changeQuestion")
-        | test
 </template>
 
 <script>
@@ -29,6 +27,13 @@ export default {
   methods: {
     changeQuestion() {
       this.$emit('change-question');
+    },
+    selectedAnswer(answer) {
+      if (this.question.correctAnswer === answer) {
+        console.log('correct');
+      } else {
+        console.log('incorrect');
+      }
     },
   },
   computed: {
