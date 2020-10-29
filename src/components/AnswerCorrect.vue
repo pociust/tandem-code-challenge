@@ -1,4 +1,15 @@
 <template lang="pug">
   div
-    | you were RIGHT
+    | {{ answer }} is correct!
 </template>
+
+<script>
+export default {
+  props: {
+    answer: {
+      type: String,
+      default: '',
+    },
+  },
+};
+</script>
