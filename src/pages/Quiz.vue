@@ -22,7 +22,7 @@
       div(v-if="answerSelectedCorrect")
         AnswerCorrect
       div(v-if="answerSelectedFalse")
-        AnswerWong
+        AnswerWrong
 </template>
 <script>
 import QuestionsJson from '../assets/questions.json';
@@ -46,10 +46,20 @@ export default {
   },
   methods: {
     answeredCorrectly(answer) {
-      console.log('correct', answer);
+      this.answerSelected = true;
+      this.answerSelectedCorrect = true;
+      setTimeout(() => {
+        this.answerSelected = false;
+        this.numberOfQuestion += 1;
+      }, 3000);
     },
     answeredIncorrectly(answer) {
-      console.log('wrong', answer);
+      this.answerSelected = true;
+      this.answerSelectedFalse = true;
+      setTimeout(() => {
+        this.answerSelected = false;
+        this.numberOfQuestion += 1;
+      }, 3000);
     },
   },
   computed: {
