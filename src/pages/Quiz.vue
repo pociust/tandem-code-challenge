@@ -12,7 +12,13 @@
   .quiz-flex
     router-link(tag="button" to='/')
       | Quit
-    QuestionCard(:question="questionSorted" @change-question="numberOfQuestion++")
+    div(v-if="!answerSelected")
+      QuestionCard(:question="questionSorted" @change-question="numberOfQuestion++")
+    div(v-if="answerSelected")
+      div(v-if="answerSelectedCorrect")
+        |  correct
+      div(v-if="answerSelectedFalse")
+        | false
 </template>
 <script>
 import QuestionsJson from '../assets/questions.json';
@@ -22,6 +28,9 @@ export default {
     return {
       questions: QuestionsJson,
       numberOfQuestion: 0,
+      answerSelected: false,
+      answerSelectedCorrect: false,
+      answerSelectedFalse: false,
     };
   },
   components: { QuestionCard },
