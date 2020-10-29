@@ -7,22 +7,30 @@
      height: 50px
      width: 50px
 
+  .content-card
+    margin: 50px
+    box-shadow: 0px 1px 3px 50px blue
+    border-radius: 10px
+    height: 500px
+    width: 500px
+
 </style>
 <template lang="pug">
   .quiz-flex
     router-link(tag="button" to='/')
       | Quit
-    div(v-if="!answerSelected")
+    .content-card
       QuestionCard(
+        v-if="!answerSelected"
         :question="questionSorted"
         @correct="answeredCorrectly"
         @wrong="answeredIncorrectly"
       )
-    div(v-if="answerSelected")
-      div(v-if="answerSelectedCorrect")
-        AnswerCorrect
-      div(v-if="answerSelectedFalse")
-        AnswerWrong
+      div(v-if="answerSelected")
+        div(v-if="answerSelectedCorrect")
+          AnswerCorrect
+        div(v-if="answerSelectedFalse")
+          AnswerWrong
 </template>
 <script>
 import QuestionsJson from '../assets/questions.json';

@@ -1,14 +1,10 @@
 <style lang="sass" scoped>
-  .question-card
+  .content-flex
+    height: 100%
     display: flex
     flex-direction: column
     justify-content: space-around
     align-content: space-around
-    margin: 50px
-    box-shadow: 0px 1px 3px 50px blue
-    border-radius: 10px
-    height: 500px
-    width: 500px
 
   .question-title
     font-size: 35px
@@ -33,7 +29,7 @@
 </style>
 
 <template lang="pug">
-  .question-card
+  .content-flex
     .question-title
       | {{ question.question }}
     .answer-flex
