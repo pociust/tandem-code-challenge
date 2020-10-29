@@ -28,9 +28,9 @@
       )
       div(v-if="answerSelected")
         div(v-if="answerSelectedCorrect")
-          AnswerCorrect
+          AnswerCorrect(:answer="answer")
         div(v-if="answerSelectedFalse")
-          AnswerWrong
+          AnswerWrong(:answer="answer")
 </template>
 <script>
 import QuestionsJson from '../assets/questions.json';
@@ -45,6 +45,7 @@ export default {
       answerSelected: false,
       answerSelectedCorrect: false,
       answerSelectedFalse: false,
+      answer: '',
     };
   },
   components: {
@@ -54,17 +55,21 @@ export default {
   },
   methods: {
     answeredCorrectly(answer) {
+      this.answer = answer;
       this.answerSelected = true;
       this.answerSelectedCorrect = true;
       setTimeout(() => {
+        this.answerSelectedCorrect = false;
         this.answerSelected = false;
         this.numberOfQuestion += 1;
       }, 3000);
     },
     answeredIncorrectly(answer) {
+      this.answer = answer;
       this.answerSelected = true;
       this.answerSelectedFalse = true;
       setTimeout(() => {
+        this.answerSelectedFalse = false;
         this.answerSelected = false;
         this.numberOfQuestion += 1;
       }, 3000);
