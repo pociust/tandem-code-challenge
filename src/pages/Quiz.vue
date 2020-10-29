@@ -16,13 +16,15 @@
       QuestionCard(:question="questionSorted" @change-question="numberOfQuestion++")
     div(v-if="answerSelected")
       div(v-if="answerSelectedCorrect")
-        |  correct
+        AnswerCorrect
       div(v-if="answerSelectedFalse")
-        | false
+        AnswerWong
 </template>
 <script>
 import QuestionsJson from '../assets/questions.json';
 import QuestionCard from '../components/QuestionCard.vue';
+import AnswerCorrect from '../components/AnswerCorrect.vue';
+import AnswerWrong from '../components/AnswerWong.vue';
 export default {
   data() {
     return {
@@ -33,7 +35,11 @@ export default {
       answerSelectedFalse: false,
     };
   },
-  components: { QuestionCard },
+  components: {
+    QuestionCard,
+    AnswerCorrect,
+    AnswerWrong,
+  },
   computed: {
     questionSorted() {
       const questionsArray = this.questions;
