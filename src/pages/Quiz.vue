@@ -20,7 +20,9 @@ export default {
   components: { QuestionCard },
   computed: {
     questionSorted() {
-      const currentQuestion = this.questions[this.numberOfQuestion];
+      const questionsArray = this.questions;
+      const questionsArrayRandomized = questionsArray.sort(() => Math.random() - 0.5);
+      const currentQuestion = questionsArrayRandomized[this.numberOfQuestion];
       const choices = currentQuestion.incorrect.concat(currentQuestion.correct);
       const reconstructedQuestion = {
         question: currentQuestion.question,
