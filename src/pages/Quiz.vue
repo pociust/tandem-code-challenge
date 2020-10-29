@@ -9,17 +9,25 @@
 
   .content-card
     margin: 50px
-    box-shadow: 0px 1px 3px 50px blue
     border-radius: 10px
     height: 500px
     width: 500px
+
+  .regular-shadow
+    box-shadow: 0px 1px 3px 50px blue
+
+  .right-shadow
+    box-shadow: 0px 1px 3px 50px green
+
+  .wrong-shadow
+    box-shadow: 0px 1px 3px 50px red
 
 </style>
 <template lang="pug">
   .quiz-flex
     router-link(tag="button" to='/')
       | Quit
-    .content-card
+    div(class="content-card" :class="classShadow")
       QuestionCard(
         v-if="!answerSelected"
         :question="questionSorted"
@@ -46,6 +54,7 @@ export default {
       answerSelectedCorrect: false,
       answerSelectedFalse: false,
       answer: '',
+      classShadow: 'regular-shadow',
     };
   },
   components: {
@@ -55,20 +64,24 @@ export default {
   },
   methods: {
     answeredCorrectly(answer) {
+      this.classShadow = 'right-shadow';
       this.answer = answer;
       this.answerSelected = true;
       this.answerSelectedCorrect = true;
       setTimeout(() => {
+        this.classShadow = 'regular-shadow';
         this.answerSelectedCorrect = false;
         this.answerSelected = false;
         this.numberOfQuestion += 1;
       }, 3000);
     },
     answeredIncorrectly(answer) {
+      this.classShadow = 'wrong-shadow';
       this.answer = answer;
       this.answerSelected = true;
       this.answerSelectedFalse = true;
       setTimeout(() => {
+        this.classShadow = 'regular-shadow';
         this.answerSelectedFalse = false;
         this.answerSelected = false;
         this.numberOfQuestion += 1;
