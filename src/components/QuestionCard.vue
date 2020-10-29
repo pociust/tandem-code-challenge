@@ -40,16 +40,13 @@
       div(
         class="answer-choices"
         v-for="choice in randomizedChoices"
-        @click="selectedAnswer(choice)"
+        @click="selectAnswer(choice)"
       )
         | {{ choice }}
 </template>
 
 <script>
 export default {
-  data() {
-    return { choices: [] };
-  },
   props: {
     question: {
       type: Object,
@@ -60,11 +57,11 @@ export default {
     changeQuestion() {
       this.$emit('change-question');
     },
-    selectedAnswer(answer) {
+    selectAnswer(answer) {
       if (this.question.correctAnswer === answer) {
         console.log('correct');
       } else {
-        console.log('incorrect');
+        console.log('wrong');
       }
     },
   },
