@@ -4,7 +4,9 @@
     flex-direction: column
     justify-content: space-around
     align-content: space-around
-    border: 1px solid black
+    margin: 50px
+    box-shadow: 0px 1px 3px 50px blue
+    border-radius: 10px
     height: 500px
     width: 500px
 
@@ -21,6 +23,7 @@
     border: 1px solid blue
     border-radius: 10px
     padding: 5px
+    font-size: 19px
 
   .answer-choices:hover
       background-color: blue
