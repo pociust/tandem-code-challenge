@@ -1,8 +1,15 @@
-<style lang="scss" scoped>
+<style lang="sass" scoped>
+  .quiz-flex
+    display: flex
+    justify-content: center
+
+    button
+     height: 50px
+     width: 50px
 
 </style>
 <template lang="pug">
-  div
+  .quiz-flex
     router-link(tag="button" to='/')
       | Quit
     QuestionCard(:question="questionSorted" @change-question="numberOfQuestion++")
