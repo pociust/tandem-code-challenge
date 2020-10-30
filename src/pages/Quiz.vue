@@ -34,7 +34,7 @@
   .quiz-flex
     div(class="content-card" :class="classShadow")
       router-link(tag="button" to='/')
-        | Quit {{ score }}
+        | Quit
       QuestionCard(
         v-if="!answerSelected"
         :question="randomizedQuestion"
@@ -46,7 +46,7 @@
         .content-flex(v-if="answerSelectedFalse")
           AnswerWrong(:answer="answer")
         .content-flex(v-if="newRound")
-          RoundTwo(@start-round-two="startRoundTwo")
+          RoundTwo(@start-round-two="startRoundTwo" :score="score")
 </template>
 <script>
 import QuestionsJson from '../assets/questions.json';
@@ -127,9 +127,7 @@ export default {
           this.score -= 1;
         }
       } else {
-        console.log('addding');
         if (this.answerSelectedCorrect) {
-          console.log('correct');
           this.score += 1;
         }
       }
