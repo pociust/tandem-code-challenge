@@ -69,10 +69,10 @@ export default {
   },
   methods: {
     checkAnswer(answer) {
+      this.answerSelected = true;
+      this.answer = answer.answer;
       if (answer.correct) {
         this.classShadow = 'right-shadow';
-        this.answer = answer.answer;
-        this.answerSelected = true;
         this.answerSelectedCorrect = true;
         setTimeout(() => {
           this.classShadow = 'regular-shadow';
@@ -81,8 +81,6 @@ export default {
         }, 3000);
       } else {
         this.classShadow = 'wrong-shadow';
-        this.answer = answer.answer;
-        this.answerSelected = true;
         this.answerSelectedFalse = true;
         setTimeout(() => {
           this.classShadow = 'regular-shadow';
