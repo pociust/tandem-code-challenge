@@ -45,8 +45,10 @@
           AnswerCorrect(:answer="answer")
         div(v-if="answerSelectedFalse")
           AnswerWrong(:answer="answer")
-        div(v-if="newRound")
+        div(v-if="newRound && roundTwo && !finalRound")
           RoundTwo(@start-round-two="startRoundTwo" :score="score")
+        div(v-if="newRound && finalRound")
+          FinalRound
 </template>
 <script>
 import QuestionsJson from '../assets/questions.json';
@@ -54,6 +56,7 @@ import QuestionCard from '../components/QuestionCard.vue';
 import AnswerCorrect from '../components/AnswerCorrect.vue';
 import AnswerWrong from '../components/AnswerWong.vue';
 import RoundTwo from '../components/RoundTwo.vue';
+import FinalRound from '../components/FinalRound.vue';
 export default {
   data() {
     return {
@@ -76,6 +79,7 @@ export default {
     AnswerCorrect,
     AnswerWrong,
     RoundTwo,
+    FinalRound,
   },
   methods: {
     checkAnswer(answer) {
@@ -105,10 +109,13 @@ export default {
       if (this.numberOfQuestion < 9) {
         this.changeQuestion();
       } else if (this.numberOfQuestion === 9) {
-        this.roundTwo = true;
         this.newRound = true;
-      } else if (this.numberOfQuestion > 9) {
+        this.roundTwo = true;
+      } else if (this.numberOfQuestion > 9 && this.numberOfQuestion < 19) {
         this.changeQuestion();
+      } else if (this.numberOfQuestion === 19) {
+        this.newRound = true;
+        this.finalRound = true;
       }
     },
     changeQuestion() {
