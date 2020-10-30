@@ -1,5 +1,5 @@
 <style lang="sass" scoped>
-  .content-flex
+  .question-card-flex
     height: 100%
     display: flex
     flex-direction: column
@@ -29,7 +29,7 @@
 </style>
 
 <template lang="pug">
-  .content-flex
+  .question-card-flex
     .question-title
       | {{ question.question }}
     .answer-flex
