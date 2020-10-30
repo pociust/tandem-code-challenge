@@ -4,8 +4,9 @@
     justify-content: center
 
     button
-     height: 50px
-     width: 50px
+      margin-left: 90%
+      height: 50px
+      width: 50px
 
   .content-card
     margin: 50px
@@ -31,9 +32,9 @@
 </style>
 <template lang="pug">
   .quiz-flex
-    router-link(tag="button" to='/')
-      | Quit {{ numberOfQuestion }}
     div(class="content-card" :class="classShadow")
+      router-link(tag="button" to='/')
+        | Quit
       QuestionCard(
         v-if="!answerSelected"
         :question="randomizedQuestion"
