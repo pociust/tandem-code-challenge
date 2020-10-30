@@ -48,7 +48,7 @@
         div(v-if="newRound && roundTwo && !finalRound")
           RoundTwo(@start-round-two="startRoundTwo" :score="score")
         div(v-if="newRound && finalRound")
-          FinalRound(:score="score")
+          FinalRound(@wager="startFinalRound($event)" :score="score")
 </template>
 <script>
 import QuestionsJson from '../assets/questions.json';
@@ -72,6 +72,7 @@ export default {
       newRound: false,
       roundTwo: false,
       finalRound: false,
+      wager: 0,
     };
   },
   components: {
@@ -126,13 +127,19 @@ export default {
       this.newRound = false;
       this.changeQuestion();
     },
+    startFinalRound(wager) {
+      this.wager = wager;
+      this.changeQuestion();
+    },
     addScore() {
-      if (this.roundTwo) {
+      if (this.roundTwo && !this.finalRound) {
         if (this.answerSelectedCorrect) {
           this.score += 2;
         } else {
           this.score -= 1;
         }
+      } else if (this.finalRound) {
+        console.log(this.wager);
       } else {
         if (this.answerSelectedCorrect) {
           this.score += 1;
