@@ -48,7 +48,7 @@
         div(v-if="newRound && roundTwo && !finalRound")
           RoundTwo(@start-round-two="startRoundTwo" :score="score")
         div(v-if="newRound && finalRound")
-          FinalRound
+          FinalRound(:score="score")
 </template>
 <script>
 import QuestionsJson from '../assets/questions.json';
@@ -93,7 +93,7 @@ export default {
           this.classShadow = 'regular-shadow';
           this.answerSelectedCorrect = false;
           this.checkRound();
-        }, 3000);
+        }, 300);
       } else {
         this.addScore();
         this.classShadow = 'wrong-shadow';
@@ -102,7 +102,7 @@ export default {
           this.classShadow = 'regular-shadow';
           this.answerSelectedFalse = false;
           this.checkRound();
-        }, 3000);
+        }, 300);
       }
     },
     checkRound() {
