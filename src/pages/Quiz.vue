@@ -22,6 +22,12 @@
   .wrong-shadow
     box-shadow: 0px 1px 3px 50px red
 
+  .content-flex
+    height: 100%
+    display: flex
+    justify-content: center
+    align-items: center
+
 </style>
 <template lang="pug">
   .quiz-flex
@@ -34,10 +40,10 @@
         @correct="answeredCorrectly"
         @wrong="answeredIncorrectly"
       )
-      div(v-if="answerSelected")
-        div(v-if="answerSelectedCorrect")
+      div(style="height: 100%" v-if="answerSelected")
+        .content-flex(v-if="answerSelectedCorrect")
           AnswerCorrect(:answer="answer")
-        div(v-if="answerSelectedFalse")
+        .content-flex(v-if="answerSelectedFalse")
           AnswerWrong(:answer="answer")
 </template>
 <script>
