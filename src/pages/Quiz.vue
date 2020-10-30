@@ -37,8 +37,7 @@
       QuestionCard(
         v-if="!answerSelected"
         :question="questionSorted"
-        @correct="answeredCorrectly"
-        @wrong="answeredIncorrectly"
+        @answer="checkAnswer"
       )
       div(style="height: 100%" v-if="answerSelected")
         .content-flex(v-if="answerSelectedCorrect")
@@ -69,29 +68,32 @@ export default {
     AnswerWrong,
   },
   methods: {
-    answeredCorrectly(answer) {
-      this.classShadow = 'right-shadow';
-      this.answer = answer;
-      this.answerSelected = true;
-      this.answerSelectedCorrect = true;
-      setTimeout(() => {
-        this.classShadow = 'regular-shadow';
-        this.answerSelectedCorrect = false;
-        this.answerSelected = false;
-        this.numberOfQuestion += 1;
-      }, 3000);
+    checkAnswer(answer) {
+      if (answer.correct) {
+        this.classShadow = 'right-shadow';
+        this.answer = answer.answer;
+        this.answerSelected = true;
+        this.answerSelectedCorrect = true;
+        setTimeout(() => {
+          this.classShadow = 'regular-shadow';
+          this.answerSelectedCorrect = false;
+          this.changeQuestion();
+        }, 3000);
+      } else {
+        this.classShadow = 'wrong-shadow';
+        this.answer = answer.answer;
+        this.answerSelected = true;
+        this.answerSelectedFalse = true;
+        setTimeout(() => {
+          this.classShadow = 'regular-shadow';
+          this.answerSelectedFalse = false;
+          this.changeQuestion();
+        }, 3000);
+      }
     },
-    answeredIncorrectly(answer) {
-      this.classShadow = 'wrong-shadow';
-      this.answer = answer;
-      this.answerSelected = true;
-      this.answerSelectedFalse = true;
-      setTimeout(() => {
-        this.classShadow = 'regular-shadow';
-        this.answerSelectedFalse = false;
-        this.answerSelected = false;
-        this.numberOfQuestion += 1;
-      }, 3000);
+    changeQuestion() {
+      this.answerSelected = false;
+      this.numberOfQuestion += 1;
     },
   },
   computed: {
