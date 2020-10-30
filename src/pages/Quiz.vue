@@ -36,7 +36,7 @@
     div(class="content-card" :class="classShadow")
       QuestionCard(
         v-if="!answerSelected"
-        :question="questionSorted"
+        :question="randomizedQuestion"
         @answer="checkAnswer"
       )
       div(style="height: 100%" v-if="answerSelected")
@@ -57,6 +57,7 @@ export default {
   data() {
     return {
       questions: QuestionsJson,
+      randomizedQuestions: [],
       numberOfQuestion: 0,
       answerSelected: false,
       answerSelectedCorrect: false,
@@ -115,11 +116,14 @@ export default {
       this.changeQuestion();
     },
   },
+  beforeMount() {
+    const questionsArray = this.questions;
+    const questionsArrayRandomized = questionsArray.sort(() => Math.random() - 0.5);
+    this.randomizedQuestions = questionsArrayRandomized;
+  },
   computed: {
-    questionSorted() {
-      const questionsArray = this.questions;
-      const questionsArrayRandomized = questionsArray.sort(() => Math.random() - 0.5);
-      const currentQuestion = questionsArrayRandomized[this.numberOfQuestion];
+    randomizedQuestion() {
+      const currentQuestion = this.randomizedQuestions[this.numberOfQuestion];
       const choices = currentQuestion.incorrect.concat(currentQuestion.correct);
       const reconstructedQuestion = {
         question: currentQuestion.question,
