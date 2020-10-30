@@ -9,7 +9,7 @@
       | click below to start Round 2!
 
     div
-      | Points are now Double, but be careful, wong answers lose you points!
+      | Points are now double, but be careful, wong answers lose you points!
     button(@click="beginRoundTwo")
       | Start Round 2
 </template>
