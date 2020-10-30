@@ -44,7 +44,7 @@
           AnswerCorrect(:answer="answer")
         .content-flex(v-if="answerSelectedFalse")
           AnswerWrong(:answer="answer")
-      div(v-if="roundTwo")
+      div(v-if="newRound")
         RoundTwo(@start-round-two="startRoundTwo")
 </template>
 <script>
@@ -63,6 +63,7 @@ export default {
       answerSelectedFalse: false,
       answer: '',
       classShadow: 'regular-shadow',
+      newRound: false,
       roundTwo: false,
       finalRound: false,
     };
@@ -100,6 +101,7 @@ export default {
         this.changeQuestion();
       } else if (this.numberOfQuestion === 9) {
         this.roundTwo = true;
+        this.newRound = true;
       } else if (this.numberOfQuestion > 9) {
         this.changeQuestion();
       }
@@ -109,7 +111,7 @@ export default {
       this.numberOfQuestion += 1;
     },
     startRoundTwo() {
-      this.roundTwo = false;
+      this.newRound = false;
       this.changeQuestion();
     },
   },
