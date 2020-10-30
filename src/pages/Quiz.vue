@@ -44,8 +44,8 @@
           AnswerCorrect(:answer="answer")
         .content-flex(v-if="answerSelectedFalse")
           AnswerWrong(:answer="answer")
-      div(v-if="newRound")
-        RoundTwo(@start-round-two="startRoundTwo")
+        .content-flex(v-if="newRound")
+          RoundTwo(@start-round-two="startRoundTwo")
 </template>
 <script>
 import QuestionsJson from '../assets/questions.json';
