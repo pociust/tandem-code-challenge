@@ -32,7 +32,7 @@
 <template lang="pug">
   .quiz-flex
     router-link(tag="button" to='/')
-      | Quit
+      | Quit {{ numberOfQuestion }}
     div(class="content-card" :class="classShadow")
       QuestionCard(
         v-if="!answerSelected"
@@ -44,12 +44,15 @@
           AnswerCorrect(:answer="answer")
         .content-flex(v-if="answerSelectedFalse")
           AnswerWrong(:answer="answer")
+      div(v-if="roundTwo")
+        RoundTwo(@start-round-two="startRoundTwo")
 </template>
 <script>
 import QuestionsJson from '../assets/questions.json';
 import QuestionCard from '../components/QuestionCard.vue';
 import AnswerCorrect from '../components/AnswerCorrect.vue';
 import AnswerWrong from '../components/AnswerWong.vue';
+import RoundTwo from '../components/RoundTwo.vue';
 export default {
   data() {
     return {
@@ -60,12 +63,15 @@ export default {
       answerSelectedFalse: false,
       answer: '',
       classShadow: 'regular-shadow',
+      roundTwo: false,
+      finalRound: false,
     };
   },
   components: {
     QuestionCard,
     AnswerCorrect,
     AnswerWrong,
+    RoundTwo,
   },
   methods: {
     checkAnswer(answer) {
@@ -77,7 +83,7 @@ export default {
         setTimeout(() => {
           this.classShadow = 'regular-shadow';
           this.answerSelectedCorrect = false;
-          this.changeQuestion();
+          this.checkRound();
         }, 3000);
       } else {
         this.classShadow = 'wrong-shadow';
@@ -85,13 +91,26 @@ export default {
         setTimeout(() => {
           this.classShadow = 'regular-shadow';
           this.answerSelectedFalse = false;
-          this.changeQuestion();
+          this.checkRound();
         }, 3000);
+      }
+    },
+    checkRound() {
+      if (this.numberOfQuestion < 9) {
+        this.changeQuestion();
+      } else if (this.numberOfQuestion === 9) {
+        this.roundTwo = true;
+      } else if (this.numberOfQuestion > 9) {
+        this.changeQuestion();
       }
     },
     changeQuestion() {
       this.answerSelected = false;
       this.numberOfQuestion += 1;
+    },
+    startRoundTwo() {
+      this.roundTwo = false;
+      this.changeQuestion();
     },
   },
   computed: {
