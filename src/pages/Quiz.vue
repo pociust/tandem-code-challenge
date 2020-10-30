@@ -34,7 +34,7 @@
   .quiz-flex
     div(class="content-card" :class="classShadow")
       router-link(tag="button" to='/')
-        | Quit
+        | Quit {{ score }}
       QuestionCard(
         v-if="!answerSelected"
         :question="randomizedQuestion"
@@ -64,6 +64,7 @@ export default {
       answerSelectedCorrect: false,
       answerSelectedFalse: false,
       answer: '',
+      score: 0,
       classShadow: 'regular-shadow',
       newRound: false,
       roundTwo: false,
@@ -83,12 +84,14 @@ export default {
       if (answer.correct) {
         this.classShadow = 'right-shadow';
         this.answerSelectedCorrect = true;
+        this.addScore();
         setTimeout(() => {
           this.classShadow = 'regular-shadow';
           this.answerSelectedCorrect = false;
           this.checkRound();
         }, 3000);
       } else {
+        this.addScore();
         this.classShadow = 'wrong-shadow';
         this.answerSelectedFalse = true;
         setTimeout(() => {
@@ -115,6 +118,21 @@ export default {
     startRoundTwo() {
       this.newRound = false;
       this.changeQuestion();
+    },
+    addScore() {
+      if (this.roundTwo) {
+        if (this.answerSelectedCorrect) {
+          this.score += 2;
+        } else {
+          this.score -= 1;
+        }
+      } else {
+        console.log('addding');
+        if (this.answerSelectedCorrect) {
+          console.log('correct');
+          this.score += 1;
+        }
+      }
     },
   },
   beforeMount() {
