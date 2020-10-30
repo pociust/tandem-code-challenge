@@ -23,7 +23,7 @@
   .wrong-shadow
     box-shadow: 0px 1px 3px 50px red
 
-  .content-flex
+  .content-flex:nth-child(2)
     height: 100%
     display: flex
     justify-content: center
@@ -40,12 +40,12 @@
         :question="randomizedQuestion"
         @answer="checkAnswer"
       )
-      div(style="height: 100%" v-if="answerSelected")
-        .content-flex(v-if="answerSelectedCorrect")
+      div(class="content-flex" style="height: 100%" v-if="answerSelected")
+        div(v-if="answerSelectedCorrect")
           AnswerCorrect(:answer="answer")
-        .content-flex(v-if="answerSelectedFalse")
+        div(v-if="answerSelectedFalse")
           AnswerWrong(:answer="answer")
-        .content-flex(v-if="newRound")
+        div(v-if="newRound")
           RoundTwo(@start-round-two="startRoundTwo" :score="score")
 </template>
 <script>
