@@ -15,13 +15,16 @@
     width: 500px
 
   .regular-shadow
-    box-shadow: 0px 1px 3px 50px blue
+    border: 50px solid #0a68ba
+    border-radius: 20px
 
   .right-shadow
-    box-shadow: 0px 1px 3px 50px green
+    border: 50px solid #0ABAB5
+    border-radius: 20px
 
   .wrong-shadow
-    box-shadow: 0px 1px 3px 50px red
+    border: 50px solid #e86f6d
+    border-radius: 20px
 
   .content-flex
     height: 100%
