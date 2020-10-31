@@ -23,7 +23,7 @@
   .wrong-shadow
     box-shadow: 0px 1px 3px 50px red
 
-  .content-flex:nth-child(2)
+  .content-flex
     height: 100%
     display: flex
     justify-content: center
@@ -33,24 +33,24 @@
 <template lang="pug">
   .quiz-flex
     div(class="content-card" :class="classShadow")
-      router-link(tag="button" to='/')
-        | Quit
       QuestionCard(
         v-if="!answerSelected"
         :question="randomizedQuestion"
         @answer="checkAnswer"
       )
-      div(class="content-flex" style="height: 100%" v-if="answerSelected")
-        div(v-if="answerSelectedCorrect")
-          AnswerCorrect(:answer="answer")
-        div(v-if="answerSelectedFalse")
-          AnswerWrong(:answer="answer")
-        div(v-if="newRound && roundTwo && !finalRound && !displayFinalScore")
-          RoundTwo(@start-round-two="startRoundTwo" :score="score")
-        div(v-if="newRound && finalRound && !displayFinalScore")
-          FinalRound(@wager="startFinalRound($event)" :score="score")
-        div(v-if="displayFinalScore")
-          FinalScore(:score="score")
+      div(class="content-flex" v-if="answerSelected")
+        AnswerCorrect(v-if="answerSelectedCorrect" :answer="answer")
+        AnswerWrong(v-if="answerSelectedFalse" :answer="answer")
+        RoundTwo(
+          v-if="newRound && roundTwo && !finalRound && !displayFinalScore"
+          @start-round-two="startRoundTwo" :score="score"
+        )
+        FinalRound(
+          v-if="newRound && finalRound && !displayFinalScore"
+          @wager="startFinalRound($event)"
+          :score="score"
+        )
+        FinalScore(v-if="displayFinalScore" :score="score")
         div(v-if="youLoseMessage")
           | I am sorry, you do not have enough points for final wager
           router-link(tag="button" to='/')
@@ -104,7 +104,7 @@ export default {
           this.classShadow = 'regular-shadow';
           this.answerSelectedCorrect = false;
           this.checkRound();
-        }, 300);
+        }, 3000);
       } else {
         this.addScore();
         this.classShadow = 'wrong-shadow';
@@ -113,7 +113,7 @@ export default {
           this.classShadow = 'regular-shadow';
           this.answerSelectedFalse = false;
           this.checkRound();
-        }, 300);
+        }, 3000);
       }
     },
     checkRound() {
