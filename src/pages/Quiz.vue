@@ -23,17 +23,17 @@
       div
         margin-right: 5px
 
-  .regular-shadow
+  .regular-border
     transition: border 1s
     border: 50px solid #0a68ba
     border-radius: 20px
 
-  .right-shadow
+  .right-border
     transition: border 1s
     border: 50px solid #0ABAB5
     border-radius: 20px
 
-  .wrong-shadow
+  .wrong-border
     transition: border 1s
     border: 50px solid #e86f6d
     border-radius: 20px
@@ -47,7 +47,7 @@
 </style>
 <template lang="pug">
   .quiz-flex
-    .content-card(:class="classShadow")
+    .content-card(:class="classBorder")
       .quiz-header
         router-link(tag="button" to="/")
           | Home
@@ -95,7 +95,7 @@ export default {
       answerSelectedFalse: false,
       answer: '',
       score: 0,
-      classShadow: 'regular-shadow',
+      classBorder: 'regular-border',
       newRound: false,
       roundTwo: false,
       finalRound: false,
@@ -117,20 +117,20 @@ export default {
       this.answerSelected = true;
       this.answer = answer;
       if (answer.correct) {
-        this.classShadow = 'right-shadow';
+        this.classBorder = 'right-border';
         this.answerSelectedCorrect = true;
         this.addScore();
         setTimeout(() => {
-          this.classShadow = 'regular-shadow';
+          this.classBorder = 'regular-border';
           this.answerSelectedCorrect = false;
           this.checkRound();
         }, 300);
       } else {
         this.addScore();
-        this.classShadow = 'wrong-shadow';
+        this.classBorder = 'wrong-border';
         this.answerSelectedFalse = true;
         setTimeout(() => {
-          this.classShadow = 'regular-shadow';
+          this.classBorder = 'regular-border';
           this.answerSelectedFalse = false;
           this.checkRound();
         }, 300);
