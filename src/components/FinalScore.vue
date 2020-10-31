@@ -69,7 +69,7 @@ export default {
         previousScore = [ userScore ];
       }
       window.localStorage.setItem('score', JSON.stringify(previousScore));
-      this.$router.push('/');
+      this.$router.push('/highscore');
     },
   },
 };
