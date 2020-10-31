@@ -31,7 +31,7 @@
 <template lang="pug">
   div(style="text-align: center" class="container")
     router-link(tag="button" to="/")
-        | Home
+      | Home
     .title
       | High Scores!
     div(class="score-list")
