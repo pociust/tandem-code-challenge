@@ -1,6 +1,6 @@
 <template lang="pug">
   div
-    | {{ answer.answer }} is correct!
+    | #[span(style="color: #0ABAB5") {{ answer.answer }}] is correct!
 </template>
 
 <script>
