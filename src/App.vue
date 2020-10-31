@@ -1,15 +1,10 @@
 <template lang="pug">
   #app
-    Header
     router-view
 </template>
 
 <script>
-export default {
-
-  name: 'App',
-  // components: { NavBar },
-};
+export default { name: 'App' };
 </script>
 
 <style lang="sass">
