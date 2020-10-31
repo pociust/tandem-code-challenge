@@ -45,10 +45,12 @@
           AnswerCorrect(:answer="answer")
         div(v-if="answerSelectedFalse")
           AnswerWrong(:answer="answer")
-        div(v-if="newRound && roundTwo && !finalRound")
+        div(v-if="newRound && roundTwo && !finalRound && !displayFinalScore")
           RoundTwo(@start-round-two="startRoundTwo" :score="score")
-        div(v-if="newRound && finalRound")
+        div(v-if="newRound && finalRound && !displayFinalScore")
           FinalRound(@wager="startFinalRound($event)" :score="score")
+        div(v-if="displayFinalScore")
+          FinalScore(:score="score")
 </template>
 <script>
 import QuestionsJson from '../assets/questions.json';
@@ -57,6 +59,7 @@ import AnswerCorrect from '../components/AnswerCorrect.vue';
 import AnswerWrong from '../components/AnswerWong.vue';
 import RoundTwo from '../components/RoundTwo.vue';
 import FinalRound from '../components/FinalRound.vue';
+import FinalScore from '../components/FinalScore.vue';
 export default {
   data() {
     return {
@@ -72,6 +75,7 @@ export default {
       newRound: false,
       roundTwo: false,
       finalRound: false,
+      displayFinalScore: false,
       wager: 0,
     };
   },
@@ -81,6 +85,7 @@ export default {
     AnswerWrong,
     RoundTwo,
     FinalRound,
+    FinalScore,
   },
   methods: {
     checkAnswer(answer) {
@@ -117,6 +122,9 @@ export default {
       } else if (this.numberOfQuestion === 19) {
         this.newRound = true;
         this.finalRound = true;
+      } else if (this.numberOfQuestion === 20) {
+        this.finalRound = false;
+        this.displayFinalScore = true;
       }
     },
     changeQuestion() {
@@ -139,7 +147,7 @@ export default {
           this.score -= 1;
         }
       } else if (this.finalRound) {
-        console.log(this.wager);
+        this.score += this.wager;
       } else {
         if (this.answerSelectedCorrect) {
           this.score += 1;
