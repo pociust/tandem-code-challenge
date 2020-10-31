@@ -42,7 +42,7 @@
       div(
         class="answer-choices"
         v-for="choice in randomizedChoices"
-        @click="selectAnswer(choice)"
+        @click="selectAnswer(choice, question.correctAnswer)"
       )
         | {{ choice }}
 </template>
@@ -59,11 +59,11 @@ export default {
     changeQuestion() {
       this.$emit('change-question');
     },
-    selectAnswer(answer) {
+    selectAnswer(answer, correctAnswer) {
       if (this.question.correctAnswer === answer) {
         this.$emit('answer', { correct: true, answer: answer });
       } else {
-        this.$emit('answer', { correct: false, answer: answer });
+        this.$emit('answer', { correct: false, answer: answer, correctAnswer: correctAnswer });
       }
     },
   },
