@@ -1,7 +1,4 @@
 <style lang="sass" scoped>
-  .round-2-flex
-    text-align: center
-
     div
       margin-top: 45px
 
@@ -23,7 +20,7 @@
 </style>
 
 <template lang="pug">
-  .round-2-flex
+  div(style="text-align: center")
     div
       | This is the end of round 1!
     div
