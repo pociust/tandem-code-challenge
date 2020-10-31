@@ -39,7 +39,7 @@ export default {
           this.wagerAlert = false;
         }, 3000);
       } else {
-        this.$emit('wager', this.wager);
+        this.$emit('wager', parseInt(this.wager));
       }
     },
   },
