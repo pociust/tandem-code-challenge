@@ -147,7 +147,11 @@ export default {
           this.score -= 1;
         }
       } else if (this.finalRound) {
-        this.score += this.wager;
+        if (this.answerSelectedCorrect) {
+          this.score += this.wager;
+        } else {
+          this.score -= this.wager;
+        }
       } else {
         if (this.answerSelectedCorrect) {
           this.score += 1;
