@@ -25,8 +25,8 @@
     .title
       | High Scores!
     div(class="score-list")
-      div(v-for="scores in highScores")
-        | {{ scores.userName }} : {{ scores.totalScore}}
+      div(v-for="scores in sortScores")
+        | {{ scores.userName }} : {{ scores.totalScore }}
 
 </template>
 <script>
@@ -36,6 +36,26 @@ export default {
   },
   created() {
     this.highScores = JSON.parse(localStorage.getItem('score'));
+  },
+  computed: {
+    sortScores() {
+      const scoreToSort = this.highScores;
+      // Use toUpperCase() to ignore character casing
+      const sortFunction = (a, b) => {
+        const scoreA = a.totalScore;
+        const scoreB = b.totalScore;
+
+        let comparison = 0;
+        if (scoreA < scoreB) {
+          comparison = 1;
+        } else if (scoreA > scoreB) {
+          comparison = -1;
+        }
+        return comparison;
+      };
+
+      return scoreToSort.sort(sortFunction);
+    },
   },
 };
 </script>
