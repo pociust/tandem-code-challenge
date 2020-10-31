@@ -1,20 +1,46 @@
+<style lang="sass" scoped>
+  .answer-wrong-flex
+    text-align: center
+    display: flex
+    height: 100%
+    flex-direction: column
+    justify-content: space-evenly
+    font-size: 20px
+
+  button
+      border: 2px solid #0a68ba
+      border-radius: 5px
+      background-color: white
+      padding: 10px
+      margin: 10px
+  button:hover
+    background-color: #0a68ba
+    color: white
+
+  .score
+    color: #0ABAB5
+    border: 1px solid #0ABAB5
+    padding: 5px
+    margin-left: 5px
+</style>
 <template lang="pug">
-  div
+  .answer-wrong-flex
+    div #[strong Final Round]
     div
-      | Final Round
-    div
-      | so far your score is{{ score }}
+      | Your score is: #[span(class="score") {{ score }}]
 
     div
-      | the last round you get to wager your points, if you get it right you gain the points,
+      | For the last question you get to wager your points
     div
-      | answer wrong and you lose the points
+      | If you get it #[span(style="color: #0ABAB5") right] you gain the points,
+    div
+      | answer #[span(style="color: #e86f6d") wrong] and you lose the points
     form
+      div(v-show="wagerAlert" style="color: #e86f6d")
+        | you do not have enough points!
       input(type="number" placehold="points" v-model="wager")
       button(type="button" @click="wagerPoints")
         | Wager
-      div(v-if="wagerAlert")
-        | you do not have enough points!
 </template>
 
 <script>
