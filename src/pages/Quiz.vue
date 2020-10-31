@@ -8,6 +8,20 @@
     border-radius: 10px
     height: 500px
     width: 500px
+    position: relative
+
+    .quiz-header
+      position: absolute
+      top: 0
+      left: 0
+      width: 100%
+      display: flex
+      flex-direction: row
+      justify-content: space-between
+      align-items: center
+
+      div
+        margin-right: 5px
 
   .regular-shadow
     transition: border 1s
@@ -30,22 +44,15 @@
     justify-content: center
     align-items: center
 
-  button
-      border: 2px solid #0a68ba
-      border-radius: 5px
-      background-color: white
-      padding: 10px
-      margin: 10px
-  button:hover
-    background-color: #0a68ba
-    color: white
-
 </style>
 <template lang="pug">
   .quiz-flex
-    div(class="content-card" :class="classShadow")
-      router-link(tag="button" to="/")
-        | Home
+    .content-card(:class="classShadow")
+      .quiz-header
+        router-link(tag="button" to="/")
+          | Home
+        div
+          | Score: {{ score }}
       QuestionCard(
         v-if="!answerSelected"
         :question="randomizedQuestion"
@@ -73,7 +80,7 @@
 import QuestionsJson from '../assets/questions.json';
 import QuestionCard from '../components/QuestionCard.vue';
 import AnswerCorrect from '../components/AnswerCorrect.vue';
-import AnswerWrong from '../components/AnswerWong.vue';
+import AnswerWrong from '../components/AnswerWrong.vue';
 import RoundTwo from '../components/RoundTwo.vue';
 import FinalRound from '../components/FinalRound.vue';
 import FinalScore from '../components/FinalScore.vue';
