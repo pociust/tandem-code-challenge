@@ -1,14 +1,14 @@
 <template lang="pug">
   div
-    | {{ answer }} is correct!
+    | {{ answer.answer }} is correct!
 </template>
 
 <script>
 export default {
   props: {
     answer: {
-      type: String,
-      default: '',
+      type: Object,
+      default: null,
     },
   },
 };

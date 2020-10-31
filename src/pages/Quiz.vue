@@ -101,7 +101,7 @@ export default {
   methods: {
     checkAnswer(answer) {
       this.answerSelected = true;
-      this.answer = answer.answer;
+      this.answer = answer;
       if (answer.correct) {
         this.classShadow = 'right-shadow';
         this.answerSelectedCorrect = true;
