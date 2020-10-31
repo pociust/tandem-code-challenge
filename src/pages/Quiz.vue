@@ -51,6 +51,10 @@
           FinalRound(@wager="startFinalRound($event)" :score="score")
         div(v-if="displayFinalScore")
           FinalScore(:score="score")
+        div(v-if="youLoseMessage")
+          | I am sorry, you do not have enough points for final wager
+          router-link(tag="button" to='/')
+            | exit game
 </template>
 <script>
 import QuestionsJson from '../assets/questions.json';
@@ -76,6 +80,7 @@ export default {
       roundTwo: false,
       finalRound: false,
       displayFinalScore: false,
+      youLoseMessage: false,
       wager: 0,
     };
   },
@@ -121,7 +126,7 @@ export default {
         this.changeQuestion();
       } else if (this.numberOfQuestion === 19) {
         if (this.score <= 0) {
-          console.log('you lose');
+          this.youLoseMessage = true;
         } else {
           this.newRound = true;
           this.finalRound = true;
