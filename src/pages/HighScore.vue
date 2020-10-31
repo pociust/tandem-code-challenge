@@ -1,14 +1,4 @@
 <style lang="sass" scoped>
-  button
-      border: 2px solid #0a68ba
-      border-radius: 5px
-      background-color: white
-      padding: 10px
-      margin: 10px
-  button:hover
-    background-color: #0a68ba
-    color: white
-
   .title
     font-size: 50px
   .score-list

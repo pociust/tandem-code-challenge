@@ -7,16 +7,6 @@
     justify-content: space-evenly
     font-size: 20px
 
-  button
-      border: 2px solid #0a68ba
-      border-radius: 5px
-      background-color: white
-      padding: 10px
-      margin: 10px
-  button:hover
-    background-color: #0a68ba
-    color: white
-
   .score
     color: #0ABAB5
     border: 1px solid #0ABAB5

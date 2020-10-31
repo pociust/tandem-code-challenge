@@ -17,17 +17,6 @@
     flex-direction: row
     justify-content: space-evenly
 
-    button
-      border: 2px solid #0a68ba
-      border-radius: 5px
-      background-color: white
-      padding: 10px
-      margin: 5px
-    button:hover
-      background-color: #0a68ba
-      cursor: pointer
-      color: white
-
     input
       width: 100px
       height: 33px

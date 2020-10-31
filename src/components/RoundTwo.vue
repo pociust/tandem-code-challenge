@@ -1,16 +1,8 @@
 <style lang="sass" scoped>
     div
       margin-top: 45px
-
-    button
-      border: 2px solid #0a68ba
-      border-radius: 5px
-      background-color: white
-      padding: 10px
-      margin-top: 50px
-    button:hover
-      background-color: #0a68ba
-      color: white
+      &:first-child
+        margin-top: 0px
 
   .score
     color: #0ABAB5
