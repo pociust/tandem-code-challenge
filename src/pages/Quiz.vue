@@ -44,6 +44,8 @@
 <template lang="pug">
   .quiz-flex
     div(class="content-card" :class="classShadow")
+      router-link(tag="button" to="/")
+        | Home
       QuestionCard(
         v-if="!answerSelected"
         :question="randomizedQuestion"
