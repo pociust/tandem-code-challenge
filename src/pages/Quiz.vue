@@ -127,7 +127,7 @@ export default {
           this.classBorder = 'regular-border';
           this.answerSelectedCorrect = false;
           this.checkRound();
-        }, 300);
+        }, 3000);
       } else {
         this.addScore();
         this.classBorder = 'wrong-border';
@@ -136,7 +136,7 @@ export default {
           this.classBorder = 'regular-border';
           this.answerSelectedFalse = false;
           this.checkRound();
-        }, 300);
+        }, 3000);
       }
     },
     checkRound() {
