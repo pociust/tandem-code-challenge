@@ -120,10 +120,13 @@ export default {
       } else if (this.numberOfQuestion > 9 && this.numberOfQuestion < 19) {
         this.changeQuestion();
       } else if (this.numberOfQuestion === 19) {
-        this.newRound = true;
-        this.finalRound = true;
+        if (this.score <= 0) {
+          console.log('you lose');
+        } else {
+          this.newRound = true;
+          this.finalRound = true;
+        }
       } else if (this.numberOfQuestion === 20) {
-        this.finalRound = false;
         this.displayFinalScore = true;
       }
     },
@@ -136,6 +139,7 @@ export default {
       this.changeQuestion();
     },
     startFinalRound(wager) {
+      this.newRound = false;
       this.wager = wager;
       this.changeQuestion();
     },
