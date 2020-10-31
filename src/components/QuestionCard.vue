@@ -16,13 +16,13 @@
     justify-content: space-around
 
   .answer-choices
-    border: 1px solid blue
+    border: 1px solid #0a68ba
     border-radius: 10px
     padding: 5px
     font-size: 19px
 
   .answer-choices:hover
-      background-color: blue
+      background-color: #0a68ba
       color: white
       padding: 5px
       cursor: pointer
