@@ -9,6 +9,9 @@
     flex-direction: row
     justify-content: center
 
+  button
+    width: 80px
+
 </style>
 
 <template lang="pug">
