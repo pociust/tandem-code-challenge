@@ -1,19 +1,35 @@
 <style lang="sass" scoped>
+  .regular-shadow
+    transition: border 1s
+    border: 50px solid #0a68ba
+    border-radius: 20px
+
   .button-container
-    margin-top: 50px
-  .button-container button
-    padding: 20px
-    background-color: blue
+    display: flex
+    flex-direction: row
+    justify-content: center
+
+  button
+      border: 2px solid #0a68ba
+      border-radius: 5px
+      background-color: white
+      padding: 10px
+      margin: 10px
+  button:hover
+    background-color: #0a68ba
+    color: white
+
 </style>
 
 <template lang="pug">
   div
-    Header
-    div.button-container
-      router-link(tag="button" to="/quiz")
-        | Start
-      router-link(tag="button" to="/highscore")
-        | High Score
+    .regular-shadow
+      Header
+      div.button-container
+        router-link(tag="button" to="/quiz")
+          | Start
+        router-link(tag="button" to="/highscore")
+          | High Score
 </template>
 
 <script>
