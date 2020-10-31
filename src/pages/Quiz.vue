@@ -15,14 +15,17 @@
     width: 500px
 
   .regular-shadow
+    transition: border 1s
     border: 50px solid #0a68ba
     border-radius: 20px
 
   .right-shadow
+    transition: border 1s
     border: 50px solid #0ABAB5
     border-radius: 20px
 
   .wrong-shadow
+    transition: border 1s
     border: 50px solid #e86f6d
     border-radius: 20px
 
