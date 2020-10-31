@@ -27,16 +27,19 @@
     transition: border 1s
     border: 50px solid #0a68ba
     border-radius: 20px
+    padding: 10px
 
   .right-border
     transition: border 1s
     border: 50px solid #0ABAB5
     border-radius: 20px
+    padding: 10px
 
   .wrong-border
     transition: border 1s
     border: 50px solid #e86f6d
     border-radius: 20px
+    padding: 10px
 
   .content-flex
     height: 100%
