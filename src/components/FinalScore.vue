@@ -62,7 +62,13 @@ export default {
   methods: {
     submitUser() {
       const userScore = { userName: this.userName, totalScore: this.score };
-      window.localStorage.setItem('score', JSON.stringify(userScore));
+      let previousScore = JSON.parse(localStorage.getItem('score'));
+      if (previousScore) {
+        previousScore = previousScore.concat(userScore);
+      } else {
+        previousScore = [ userScore ];
+      }
+      window.localStorage.setItem('score', JSON.stringify(previousScore));
       this.$router.push('/');
     },
   },
