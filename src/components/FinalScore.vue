@@ -43,17 +43,26 @@
       router-link(tag="button" to="/")
         | Home
       form
-        input(type="text" placeholder="Username")
-        button
+        input(type="text" placeholder="Username" v-model="userName")
+        button(@click.prevent="submitUser")
           | Submit score
 </template>
 
 <script>
 export default {
+  data() {
+    return { userName: '' };
+  },
   props: {
     score: {
       type: Number,
       default: 0,
+    },
+  },
+  methods: {
+    submitUser() {
+      window.localStorage.setItem(this.userName, this.score);
+      this.$router.push('/');
     },
   },
 };
