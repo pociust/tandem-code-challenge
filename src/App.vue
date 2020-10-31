@@ -1,16 +1,18 @@
 <template lang="pug">
   #app
+    Header
     router-view
 </template>
 
 <script>
-import Landing from './pages/Landing.vue';
 export default {
+
   name: 'App',
-  components: { Landing },
+  // components: { NavBar },
 };
 </script>
 
 <style lang="sass">
-
+  #app
+    font-family: 'Asap', sans-serif
 </style>
