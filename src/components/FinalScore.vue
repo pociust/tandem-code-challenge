@@ -5,13 +5,6 @@
     flex-direction: column
     justify-content: space-evenly
 
-  .score
-    color: #0ABAB5
-    border: 1px solid #0ABAB5
-    border-radius: 10px
-    padding: 5px
-    margin-left: 5px
-
   .button-flex
     display: flex
     flex-direction: row

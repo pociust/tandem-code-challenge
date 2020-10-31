@@ -3,12 +3,6 @@
       margin-top: 45px
       &:first-child
         margin-top: 0px
-
-  .score
-    color: #0ABAB5
-    border: 1px solid #0ABAB5
-    padding: 5px
-    margin-left: 5px
 </style>
 
 <template lang="pug">

@@ -22,4 +22,11 @@ export default { name: 'App' };
       background-color: #0a68ba
       cursor: pointer
       color: white
+
+  .score
+    color: #0ABAB5
+    border: 1px solid #0ABAB5
+    border-radius: 5px
+    padding: 5px
+    margin-left: 5px
 </style>

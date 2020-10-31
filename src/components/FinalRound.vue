@@ -7,11 +7,6 @@
     justify-content: space-evenly
     font-size: 20px
 
-  .score
-    color: #0ABAB5
-    border: 1px solid #0ABAB5
-    padding: 5px
-    margin-left: 5px
 </style>
 <template lang="pug">
   .answer-wrong-flex
