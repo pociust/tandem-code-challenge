@@ -1,9 +1,10 @@
 <template lang="pug">
   div
     div
-      | I'm sorry, {{ answer.answer }} is wrong!
+      | I am sorry, #[span(style="color: #e86f6d") {{ answer.answer }}] is wrong!
     div
-      | The correct answer is: {{ answer.correctAnswer }}
+      | The correct answer is: #[span(style="color: #0ABAB5") {{ answer.correctAnswer }}]
+
 </template>
 
 <script>
