@@ -18,7 +18,10 @@ export default { name: 'App' };
     padding: 10px
     margin: 5px
     cursor: pointer
-    &:hover
+    &:hover, &:active, &:focus
+      outline: none
+      border: 2px solid #0a68ba
+      border-radius: 5px
       background-color: #0a68ba
       cursor: pointer
       color: white
