@@ -14,10 +14,16 @@
   .answer-flex
     display: flex
     justify-content: space-around
+    flex-wrap: wrap
 
   .answer-choices
     border: 1px solid #0a68ba
+    text-align: center
     border-radius: 10px
+    width: 40%
+    margin-top: 20px
+    height: auto
+    overflow: wrap
     padding: 5px
     font-size: 19px
 
