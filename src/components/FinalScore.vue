@@ -42,7 +42,7 @@
     .button-flex
       router-link(tag="button" to="/")
         | Home
-      form
+      form(v-if="score > 0 ")
         input(type="text" placeholder="Username" v-model="userName")
         button(@click.prevent="submitUser")
           | Submit score
@@ -61,7 +61,8 @@ export default {
   },
   methods: {
     submitUser() {
-      window.localStorage.setItem(this.userName, this.score);
+      const userScore = { userName: this.userName, totalScore: this.score };
+      window.localStorage.setItem('score', JSON.stringify(userScore));
       this.$router.push('/');
     },
   },
