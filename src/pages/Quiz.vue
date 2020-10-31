@@ -3,11 +3,6 @@
     display: flex
     justify-content: center
 
-    button
-      margin-left: 90%
-      height: 50px
-      width: 50px
-
   .content-card
     margin: 50px
     border-radius: 10px
@@ -35,6 +30,16 @@
     justify-content: center
     align-items: center
 
+  button
+      border: 2px solid #0a68ba
+      border-radius: 5px
+      background-color: white
+      padding: 10px
+      margin: 10px
+  button:hover
+    background-color: #0a68ba
+    color: white
+
 </style>
 <template lang="pug">
   .quiz-flex
@@ -57,7 +62,7 @@
           :score="score"
         )
         FinalScore(v-if="displayFinalScore" :score="score")
-        div(v-if="youLoseMessage")
+        div(style="text-align: center; font-size: 20px; padding: 5px" v-if="youLoseMessage")
           | I am sorry, you do not have enough points for final wager
           router-link(tag="button" to='/')
             | exit game
@@ -110,7 +115,7 @@ export default {
           this.classShadow = 'regular-shadow';
           this.answerSelectedCorrect = false;
           this.checkRound();
-        }, 3000);
+        }, 300);
       } else {
         this.addScore();
         this.classShadow = 'wrong-shadow';
@@ -119,7 +124,7 @@ export default {
           this.classShadow = 'regular-shadow';
           this.answerSelectedFalse = false;
           this.checkRound();
-        }, 3000);
+        }, 300);
       }
     },
     checkRound() {
