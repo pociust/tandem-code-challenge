@@ -17,9 +17,9 @@
 
   .score
     color: #0ABAB5
-
-  .wrong
-    color: #e86f6d
+    border: 1px solid #0ABAB5
+    padding: 5px
+    margin-left: 5px
 </style>
 
 <template lang="pug">
@@ -27,15 +27,15 @@
     div
       | This is the end of round 1!
     div
-      | Currently you have:
-      span(class="score")  {{ score }} points
+      | Currently you have: #[span(class="score") {{ score }} points]
 
     div
       | Click below to start round 2
 
     div
-      | Points are now double, but be careful,
-      .wrong wrong answers will lose you points!
+      | Points are now double, but be careful...
+    div
+      | #[span(style="color: #e86f6d") Wrong] answers will lose you points!
     button(@click="beginRoundTwo")
       | Start Round 2
 </template>
