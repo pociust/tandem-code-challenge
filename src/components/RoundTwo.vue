@@ -1,15 +1,41 @@
+<style lang="sass" scoped>
+  .round-2-flex
+    text-align: center
+
+    div
+      margin-top: 45px
+
+    button
+      border: 2px solid #0a68ba
+      border-radius: 5px
+      background-color: white
+      padding: 10px
+      margin-top: 50px
+    button:hover
+      background-color: #0a68ba
+      color: white
+
+  .score
+    color: #0ABAB5
+
+  .wrong
+    color: #e86f6d
+</style>
+
 <template lang="pug">
-  div
+  .round-2-flex
     div
-      | End of Round 1!
+      | This is the end of round 1!
     div
-      | currently you have {{ score }} points
+      | Currently you have:
+      span(class="score")  {{ score }} points
 
     div
-      | click below to start Round 2!
+      | Click below to start round 2
 
     div
-      | Points are now double, but be careful, wong answers lose you points!
+      | Points are now double, but be careful,
+      .wrong wrong answers will lose you points!
     button(@click="beginRoundTwo")
       | Start Round 2
 </template>
