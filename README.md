@@ -21,11 +21,11 @@ A multiple choice quiz that allows users to save and retrieve high scores!
 - Users can view questions one at a time
 - Questions are multiple choice
 - Questions only show once per round
-- Correct answers revealed after user selects choice
-- User receive a score at the end of the quiz
+- Correct answers are revealed after user selects choice
+- User receives a score at the end of the quiz
  
  
 ### Enhancements
 - Improve the scalability
-- Move saving high scores from local storage to database so friends can compete from different computers
+- Store high scores in a database so friends can compete from different computers
 - Add timer element for new challenge (?)
