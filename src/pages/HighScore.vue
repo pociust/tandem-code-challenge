@@ -24,7 +24,9 @@
       | Home
     .title
       | High Scores!
-    div(class="score-list")
+    div(style="margin-top: 20px" v-if="highScores.length === 0")
+      | No High Scores! Be the First!
+    div(class="score-list" v-if="highScores.length > 0")
       div(v-for="scores in sortScores")
         | {{ scores.userName }} : {{ scores.totalScore }}
 
@@ -32,15 +34,22 @@
 <script>
 export default {
   data() {
-    return { highScores: [] };
+    return {
+      highScores: [],
+      message: false,
+    };
   },
   created() {
-    this.highScores = JSON.parse(localStorage.getItem('score'));
+    const checkStorage = JSON.parse(localStorage.getItem('score'));
+    if (checkStorage) {
+      this.highScores = checkStorage;
+    } else {
+      this.message = true;
+    }
   },
   computed: {
     sortScores() {
       const scoreToSort = this.highScores;
-      // Use toUpperCase() to ignore character casing
       const sortFunction = (a, b) => {
         const scoreA = a.totalScore;
         const scoreB = b.totalScore;
@@ -53,7 +62,6 @@ export default {
         }
         return comparison;
       };
-
       return scoreToSort.sort(sortFunction);
     },
   },
